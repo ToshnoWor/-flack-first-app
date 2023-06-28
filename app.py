@@ -2,7 +2,17 @@ from flask import Flask, render_template, jsonify
 
 app = Flask(__name__)
 
-VAR = [{'id': 0, 'name': 'Alex'}, {'id': 1, 'name': 'Jonne'}]
+VAR = [{
+  'id': 0,
+  'catName': 'cat1',
+  'name': 'Alex',
+  'problem': ''
+}, {
+  'id': 1,
+  'catName': 'cat2',
+  'name': 'Jonne',
+  'problem': ''
+}]
 
 
 @app.route("/")
