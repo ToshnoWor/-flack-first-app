@@ -75,6 +75,14 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "phonenumbers"
+version = "8.13.16"
+description = "Python version of Google's common library for parsing, formatting, storing and validating international phone numbers."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "werkzeug"
 version = "2.3.6"
 description = "The comprehensive WSGI web application library."
@@ -91,7 +99,7 @@ watchdog = ["watchdog (>=2.3)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "d7a65ba75d9fd1d70398a76955d93d28129b8c09a3b56e10fef71ce427090c8b"
+content-hash = "6072bf7f22d5cffc3d5655ffdfe323fb5a2817ca5c7020ad2cd2e2cb54c516ab"
 
 [metadata.files]
 blinker = []
@@ -101,4 +109,5 @@ flask = []
 itsdangerous = []
 jinja2 = []
 markupsafe = []
+phonenumbers = []
 werkzeug = []

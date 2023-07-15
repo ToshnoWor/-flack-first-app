@@ -1,20 +1,107 @@
 <div class='border rounded p-2 mb-2'>
-  
-  <h4 class='text-center border rounded p-2 m-3'>{{obj['catName']}}</h4>
-  
+  <h2 class='text-center border rounded p-2 m-3'>Пацієнт {{obj['pi']['fullname']}}</h4>
   <div>
     <div class='mt-2 px-4'>
-      <h5>
-        <b>Name:</b> {{obj['name']}}
-      </h5>
-    </div>
-    <div class='mt-2 px-3'>
-      <div class="form-floating">
-        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">{{obj['problem']}}</textarea>
-        <label for="floatingTextarea2"><b>Problems:</b></label>
+        <div class="input-group mt-2">
+          <span class="input-group-text" id="basic-addon1" style='min-width: 180px'><b>Повне Ім'я</b></span>
+          <input id="fullname{{obj['id']}}" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons" readonly value='{{obj['pi']['fullname']}}'>
+          <button class="btn btn-outline-secondary" type="button" onclick=removeReadonly("fullname{{obj['id']}}", "readonly")>Змінити</button>
+          <button class="btn btn-outline-secondary" type="button" onclick=setReadonly("fullname{{obj['id']}}", "readonly")>Зберегти</button>
+        </div>
+      
+      <div class="input-group mt-2">
+        <span class="input-group-text" id="basic-addon1" style='min-width: 180px'><b>День народження</b></span>
+        <input id="birthday{{obj['id']}}" 
+               type="date" 
+               class="form-control" 
+               readonly 
+               value='{{obj['pi']['birthday']}}'>
+        <button class="btn btn-outline-secondary" type="button" onclick=removeReadonly("birthday{{obj['id']}}", "readonly")>Змінити</button>
+        <button class="btn btn-outline-secondary" type="button" onclick=setReadonly("birthday{{obj['id']}}", "readonly")>Зберегти</button>
       </div>
+
+      <div class="input-group mt-2">
+        <span class="input-group-text" id="basic-addon1" style='min-width: 180px'><b>Місце проживання</b></span>
+        <input id="residence{{obj['id']}}" 
+               type="text" 
+               class="form-control" 
+               placeholder="text" 
+               readonly 
+               value='{{obj['pi']['residence']}}'>
+        <button class="btn btn-outline-secondary" type="button" onclick=removeReadonly("residence{{obj['id']}}", "readonly")>Змінити</button>
+        <button class="btn btn-outline-secondary" type="button" onclick=setReadonly("residence{{obj['id']}}", "readonly")>Зберегти</button>
+      </div>
+
+      <div class="input-group mt-2">
+        <span class="input-group-text" 
+              id="basic-addon1"
+              style='min-width: 180px'><b>Телефон</b></span>
+        <input id="phone{{obj['id']}}" 
+               type="tel" 
+               class="form-control" 
+               placeholder="tel" 
+               readonly 
+               value='{{obj['pi']['phone']}}'>
+        <button class="btn btn-outline-secondary" type="button" onclick=removeReadonly("phone{{obj['id']}}", "readonly")>Змінити</button>
+        <button class="btn btn-outline-secondary" type="button" onclick=setReadonly("phone{{obj['id']}}", "readonly")>Зберегти</button>
+      </div>
+
+      <div class="input-group mt-2">
+        <span class="input-group-text" 
+              id="basic-addon1"
+              style='min-width: 180px'><b>Місце роботи</b></span>
+        <input id="placeofwork{{obj['id']}}" 
+               type="text" 
+               class="form-control" 
+               placeholder="text" 
+               readonly 
+               value='{{obj['pi']['placeofwork']}}'>
+        <button class="btn btn-outline-secondary" type="button" onclick="removeReadonly('placeofwork{{obj['id']}}', 'readonly')">Змінити</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="setReadonly('placeofwork{{obj['id']}}', 'readonly')">Зберегти</button>
+      </div>
+
+      <div class="input-group mt-2">
+        <span class="input-group-text" 
+              id="basic-addon1"
+              style='min-width: 180px'><b>Скарга</b></span>
+          <ul class="list-group form-control" style="padding: 0;">
+            <script>
+              const idList{{obj['id']}} = []
+            </script>
+        {% for val in obj['pi']['complaint'] %}
+            <script>
+              idList{{obj['id']}}.push("{{val}}{{obj['id']}}")
+            </script>
+            <li class="list-group-item">
+              <input class="form-check-input me-1" type="checkbox" {% if obj['pi']['complaint'][val]: %} checked {% endif %} id="{{val}}{{obj['id']}}" value="" disabled>
+              <label class="form-check-label" for="{{val}}{{obj['id']}}">{{val}}</label>
+            </li>
+        {% endfor %}
+          </ul>
+        <button class="btn btn-outline-secondary" type="button" onclick="removeDisabled(idList{{obj['id']}}, 'disabled')">Змінити</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="setDisabled(idList{{obj['id']}}, 'disabled')">Зберегти</button>
+      </div>
+      
     </div>
-    
   </div>
-  
+</div>
+
+  <script>
+    function removeDisabled(tagIdList, attName) {
+      for (let obj of tagIdList) {
+        document.getElementById(obj).removeAttribute(attName);
+      }
+    }
+    function setDisabled(tagIdList, attName) {
+      for (let obj of tagIdList) {
+        document.getElementById(obj).setAttribute(attName, true);
+      }
+    }
+    function removeReadonly(tagId, attName) {
+      document.getElementById(tagId).removeAttribute(attName);
+    }
+    function setReadonly(tagId, attName) {
+      document.getElementById(tagId).setAttribute(attName, true);
+    }
+  </script>
 </div>

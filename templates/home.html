@@ -15,16 +15,11 @@
 </head>
 <body>
   <div class='container'>
-    <h1 class=text-center>Hello, World!</h1>
-    <img id="banner" class='img-fluid' src="https://-flack-first-app.alekseikoval.repl.co/static/image_logo.jpg" alt="logo" height=120>
+    <h1 class=text-center>Charts</h1>
+    <img id="banner" class='img-fluid' src="https://-flack-first-app.alekseikoval.repl.co/static/image_logo.jpg" alt="logo">
     <div class='mt-4'>
       {% for obj in var %}
         {% include 'item.html' %}
-      {% endfor %}
-    </div>
-    <div class='mt-4'>
-      {% for obj in var2 %}
-        {% include 'item2.html' %}
       {% endfor %}
     </div>
   </div>
