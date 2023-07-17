@@ -5,8 +5,8 @@
         <div class="input-group mt-2">
           <span class="input-group-text" id="basic-addon1" style='min-width: 180px'><b>Повне Ім'я</b></span>
           <input id="fullname{{obj['id']}}" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons" readonly value='{{obj['pi']['fullname']}}'>
-          <button class="btn btn-outline-secondary" type="button" onclick=removeReadonly("fullname{{obj['id']}}", "readonly")>Змінити</button>
-          <button class="btn btn-outline-secondary" type="button" onclick=setReadonly("fullname{{obj['id']}}", "readonly")>Зберегти</button>
+          <button class="btn btn-outline-secondary" type="button" onclick="removeReadonly('fullname{{obj['id']}}', 'readonly')">Змінити</button>
+          <button class="btn btn-outline-secondary" type="button" onclick="setReadonly('fullname{{obj['id']}}', 'readonly')">Зберегти</button>
         </div>
       
       <div class="input-group mt-2">
@@ -16,8 +16,8 @@
                class="form-control" 
                readonly 
                value='{{obj['pi']['birthday']}}'>
-        <button class="btn btn-outline-secondary" type="button" onclick=removeReadonly("birthday{{obj['id']}}", "readonly")>Змінити</button>
-        <button class="btn btn-outline-secondary" type="button" onclick=setReadonly("birthday{{obj['id']}}", "readonly")>Зберегти</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="removeReadonly('birthday{{obj['id']}}', 'readonly')">Змінити</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="setReadonly('birthday{{obj['id']}}', 'readonly')">Зберегти</button>
       </div>
 
       <div class="input-group mt-2">
@@ -28,8 +28,8 @@
                placeholder="text" 
                readonly 
                value='{{obj['pi']['residence']}}'>
-        <button class="btn btn-outline-secondary" type="button" onclick=removeReadonly("residence{{obj['id']}}", "readonly")>Змінити</button>
-        <button class="btn btn-outline-secondary" type="button" onclick=setReadonly("residence{{obj['id']}}", "readonly")>Зберегти</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="removeReadonly('residence{{obj['id']}}', 'readonly')">Змінити</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="setReadonly('residence{{obj['id']}}', 'readonly')">Зберегти</button>
       </div>
 
       <div class="input-group mt-2">
@@ -42,8 +42,8 @@
                placeholder="tel" 
                readonly 
                value='{{obj['pi']['phone']}}'>
-        <button class="btn btn-outline-secondary" type="button" onclick=removeReadonly("phone{{obj['id']}}", "readonly")>Змінити</button>
-        <button class="btn btn-outline-secondary" type="button" onclick=setReadonly("phone{{obj['id']}}", "readonly")>Зберегти</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="removeReadonly('phone{{obj['id']}}', 'readonly')">Змінити</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="setReadonly('phone{{obj['id']}}', 'readonly')">Зберегти</button>
       </div>
 
       <div class="input-group mt-2">
@@ -91,6 +91,7 @@
       for (let obj of tagIdList) {
         document.getElementById(obj).removeAttribute(attName);
       }
+      document.getElementById(tagIdList[0]).focus();
     }
     function setDisabled(tagIdList, attName) {
       for (let obj of tagIdList) {
@@ -99,6 +100,7 @@
     }
     function removeReadonly(tagId, attName) {
       document.getElementById(tagId).removeAttribute(attName);
+      document.getElementById(tagId).focus();
     }
     function setReadonly(tagId, attName) {
       document.getElementById(tagId).setAttribute(attName, true);
