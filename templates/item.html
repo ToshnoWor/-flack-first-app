@@ -1,10 +1,10 @@
 <div class='border rounded p-2 mb-2'>
-  <h2 class='text-center border rounded p-2 m-3'>{{obj['pi']['fullname']}}</h4>
+  <h2 class='text-center border rounded p-2 m-3'>{{obj['fullname']}}</h4>
   <div>
     <div class='mt-2 px-4'>
         <div class="input-group mt-2">
           <span class="input-group-text" id="basic-addon1" style='min-width: 180px'><b>Повне Ім'я</b></span>
-          <input id="fullname{{obj['id']}}" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons" readonly value='{{obj['pi']['fullname']}}'>
+          <input id="fullname{{obj['id']}}" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username with two button addons" readonly value='{{obj['fullname']}}'>
           <button class="btn btn-outline-secondary" type="button" onclick="removeReadonly('fullname{{obj['id']}}', 'readonly')">Змінити</button>
           <button class="btn btn-outline-secondary" type="button" onclick="setReadonly('fullname{{obj['id']}}', 'readonly')">Зберегти</button>
         </div>
@@ -15,7 +15,7 @@
                type="date" 
                class="form-control" 
                readonly 
-               value='{{obj['pi']['birthday']}}'>
+               value='{{obj['birthday']}}'>
         <button class="btn btn-outline-secondary" type="button" onclick="removeReadonly('birthday{{obj['id']}}', 'readonly')">Змінити</button>
         <button class="btn btn-outline-secondary" type="button" onclick="setReadonly('birthday{{obj['id']}}', 'readonly')">Зберегти</button>
       </div>
@@ -27,7 +27,7 @@
                class="form-control" 
                placeholder="text" 
                readonly 
-               value='{{obj['pi']['residence']}}'>
+               value='{{obj['residence']}}'>
         <button class="btn btn-outline-secondary" type="button" onclick="removeReadonly('residence{{obj['id']}}', 'readonly')">Змінити</button>
         <button class="btn btn-outline-secondary" type="button" onclick="setReadonly('residence{{obj['id']}}', 'readonly')">Зберегти</button>
       </div>
@@ -36,14 +36,14 @@
         <span class="input-group-text" 
               id="basic-addon1"
               style='min-width: 180px'><b>Телефон</b></span>
-        <input id="phone{{obj['id']}}" 
+        <input id="tel{{obj['id']}}" 
                type="tel" 
                class="form-control" 
                placeholder="tel" 
                readonly 
-               value='{{obj['pi']['phone']}}'>
-        <button class="btn btn-outline-secondary" type="button" onclick="removeReadonly('phone{{obj['id']}}', 'readonly')">Змінити</button>
-        <button class="btn btn-outline-secondary" type="button" onclick="setReadonly('phone{{obj['id']}}', 'readonly')">Зберегти</button>
+               value='{{obj['tel']}}'>
+        <button class="btn btn-outline-secondary" type="button" onclick="removeReadonly('tel{{obj['id']}}', 'readonly')">Змінити</button>
+        <button class="btn btn-outline-secondary" type="button" onclick="setReadonly('tel{{obj['id']}}', 'readonly')">Зберегти</button>
       </div>
 
       <div class="input-group mt-2">
@@ -55,7 +55,7 @@
                class="form-control" 
                placeholder="text" 
                readonly 
-               value='{{obj['pi']['placeofwork']}}'>
+               value='{{obj['placeofwork']}}'>
         <button class="btn btn-outline-secondary" type="button" onclick="removeReadonly('placeofwork{{obj['id']}}', 'readonly')">Змінити</button>
         <button class="btn btn-outline-secondary" type="button" onclick="setReadonly('placeofwork{{obj['id']}}', 'readonly')">Зберегти</button>
       </div>
@@ -68,12 +68,12 @@
             <script>
               const idList{{obj['id']}} = []
             </script>
-        {% for val in obj['pi']['complaint'] %}
+        {% for val in obj['complaint'] %}
             <script>
               idList{{obj['id']}}.push("{{val}}{{obj['id']}}")
             </script>
             <li class="list-group-item">
-              <input class="form-check-input me-1" type="checkbox" {% if obj['pi']['complaint'][val]: %} checked {% endif %} id="{{val}}{{obj['id']}}" value="" disabled>
+              <input class="form-check-input me-1" type="checkbox" {% if obj['complaint'][val]: %} checked {% endif %} id="{{val}}{{obj['id']}}" value="" disabled>
               <label class="form-check-label" for="{{val}}{{obj['id']}}">{{val}}</label>
             </li>
         {% endfor %}

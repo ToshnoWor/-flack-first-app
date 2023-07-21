@@ -1,68 +1,19 @@
 from flask import Flask, render_template, jsonify
-import datetime
-import phonenumbers as tel
+from database import load_person_from_db
 
 app = Flask(__name__)
-
-VAR = [{
-  'id': 0,
-  'pi': {
-    'fullname':
-    'Коваль Олексій Олександрович',
-    'birthday':
-    datetime.date(1995, 9, 9),
-    'residence':
-    'Вул. Миру 99, кв. 99, під\'їзд 2.',
-    'phone':
-    tel.format_number(tel.parse('+380958403255'), tel.PhoneNumberFormat.E164),
-    'placeofwork':
-    'From home',
-    'complaint': {
-      'Біль': True,
-      'Скованість': True,
-      'Обмеження рухів': False,
-      'Температура': True,
-      'Слабкість': False,
-      'Сип': False,
-      'Лімфо вузли': False,
-      'Інше': False
-    }
-  }
-}, {
-  'id': 1,
-  'pi': {
-    'fullname':
-    'Ім\'я Призвище Побатькові',
-    'birthday':
-    datetime.date(1996, 6, 6),
-    'residence':
-    'Вул. Шевченка 66, кв. 66, під\'їзд 2.',
-    'phone':
-    tel.format_number(tel.parse('+380951203255'), tel.PhoneNumberFormat.E164),
-    'placeofwork':
-    'Інше місце.',
-    'complaint': {
-      'Біль': True,
-      'Скованість': False,
-      'Обмеження рухів': False,
-      'Температура': True,
-      'Слабкість': True,
-      'Сип': False,
-      'Лімфо вузли': False,
-      'Інше': False
-    }
-  }
-}]
 
 
 @app.route("/")
 def hello_world():
-  return render_template('home.html', var=VAR)
+  persons = load_person_from_db()
+  return render_template('home.html', persons=persons)
 
 
-@app.route("/api/names")
+@app.route("/api/persons")
 def list_name():
-  return jsonify(VAR)
+  persons = load_person_from_db()
+  return jsonify(persons)
 
 
 if __name__ == "__main__":
