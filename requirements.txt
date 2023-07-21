@@ -1,5 +1,5 @@
 Flask
 gunicorn
 phonenumbers
-feather-icons
 sqlalchemy
+pymysql
